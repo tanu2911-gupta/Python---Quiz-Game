@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎉 Quiz Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Thank You for Playing!</h1>
+        <h2 class="score">Your Score: <span>{{ score }} / {{ total }}</span></h2>
+
+        {% if not submitted %}
+        <form method="POST">
+            <p class="feedback-label">We'd love your feedback!</p>
+            <textarea name="feedback" placeholder="Your feedback..." rows="4" required></textarea><br>
+            <button type="submit">Submit Feedback</button>
+        </form>
+        {% else %}
+        <p class="thankyou">✅ Thank you for your feedback!</p>
+        {% endif %}
+    </div>
+</body>
+</html>

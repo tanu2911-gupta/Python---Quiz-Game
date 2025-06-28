@@ -1,0 +1,188 @@
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 40px;
+    color: white; /* White text for visibility */
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    background: transparent; /* No background box */
+    box-shadow: none;
+}
+
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+    color: white;
+}
+
+
+h2.question {
+    font-size: 25px;
+    font-weight: bold;
+    background-color: white;         /* White background */
+    padding: 20px;                   /* Space inside the block */
+    border-radius: 12px;             /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    color: #111827;                  /* Dark text for visibility */
+}
+
+
+.option-btn {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.7);  /* lighter for better readability */
+    border: 2px solid #10b981;
+    color: black;  /* changed from white to black */
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(2px); /* optional: gives frosted glass effect */
+}
+
+
+.option-btn.selected {
+    background-color: rgba(16, 185, 129, 0.3);
+}
+
+.option-btn.correct {
+    background-color: #4ade80 !important;
+    color: white;
+}
+
+.option-btn.wrong {
+    background-color: #f87171 !important;
+    color: white;
+}
+
+.option-btn:hover {
+    background-color: rgba(187, 247, 208, 0.3);
+}
+
+.submit-next-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.submit-btn,
+.next-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-btn {
+    background-color: #10b981;
+    color: white;
+}
+
+.next-btn {
+    background-color: #3498db;
+    color: white;
+    display: none;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.feedback.success {
+    color: #4ade80;
+}
+
+.feedback.error {
+    color: #f87171;
+}
+
+.category, .footer, .score, .thankyou {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #10b981;
+    background-color: white;
+    color: #111;
+    resize: vertical;
+    font-family: 'Segoe UI', sans-serif;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-label {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    margin-top: 15px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #10b981;
+}
+
+.score {
+    font-size: 32px;         /* Increased from 18px */
+    font-weight: 700;        /* Bolder */
+    color: white;
+    margin-top: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Optional: glowing effect */
+    text-shadow:
+    2px 2px 0 #000,
+    2px 2px 0 #000,
+    2px 2px 0 #000,
+    2px 2px 0 #000;
+}
+
+.thankyou {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    color: white;  /* Bright green text */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+    /* Simulated black border using text-shadow */
+    text-shadow:
+        2px 2px 0 #000,
+        2px 2px 0 #000,
+        2px 2px 0 #000,
+        2px 2px 0 #000;
+}

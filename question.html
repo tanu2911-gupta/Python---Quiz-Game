@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🧠 Quiz Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        let selectedBtn = null;
+        function selectOption(btn) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            selectedBtn = btn;
+            document.getElementById("selected_option").value = btn.innerText; // ✅ Set selected answer
+            document.getElementById("submit-btn").disabled = false;
+        }
+
+        function submitAnswer() {
+            const correctAnswer = "{{ q.answer }}";
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.innerText === correctAnswer) {
+                    btn.classList.add('correct');
+                } else if (btn === selectedBtn) {
+                    btn.classList.add('wrong');
+                }
+            });
+
+            let msg = document.getElementById("result-msg");
+            if (selectedBtn.innerText === correctAnswer) {
+                msg.innerText = "✔ Correct!";
+                msg.className = "feedback success";
+            } else {
+                msg.innerText = "✖ Wrong! Correct answer: " + correctAnswer;
+                msg.className = "feedback error";
+            }
+
+            document.getElementById("submit-btn").style.display = "none";
+            document.getElementById("next-btn").style.display = "inline-block";
+        }
+    </script>
+    <style>
+        .submit-next-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Quiz Game</h1>
+        <p class="category">Category: {{ q.category }}</p>
+        <h2 class="question">Q{{ qnum }}: {{ q.question }}</h2>
+
+        <form method="POST">
+            {% for opt in q.options %}
+            <button type="button" class="option-btn" onclick="selectOption(this)">{{ opt }}</button>
+            {% endfor %}
+            <input type="hidden" name="selected_option" id="selected_option">
+            <div class="submit-next-group">
+                <button id="submit-btn" type="button" onclick="submitAnswer()" disabled class="submit-btn">Submit ✅</button>
+                <button id="next-btn" type="submit" class="next-btn" style="display: none;">Next ➡️</button>
+            </div>
+        </form>
+
+        <p id="result-msg" class="feedback"></p>
+        <p class="footer">Question {{ qnum }} of {{ total }}</p>
+    </div>
+</body>
+</html>
